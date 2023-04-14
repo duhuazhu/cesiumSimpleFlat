@@ -30,13 +30,6 @@ screenSpaceEventHandler.setInputAction(function (clickEvent) {
     if (model && model._sourcePrograms && model._rendererResources) {
         Object.keys(model._sourcePrograms).forEach(key => {
             let program = model._sourcePrograms[key]
-            let fragmentShader = model._rendererResources.sourceShaders[program.fragmentShader];
-            let v_position = "";
-            if (fragmentShader.indexOf(" v_positionEC;") != -1) {
-                v_position = "v_positionEC";
-            } else if (fragmentShader.indexOf(" v_pos;") != -1) {
-                v_position = "v_pos";
-            }
             model._rendererResources.sourceShaders[program.vertexShader] =
                 `
                 precision highp float;
